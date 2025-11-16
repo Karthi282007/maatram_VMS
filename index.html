@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maatram Foundation VMS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="app-header"></header>
+
+    <!-- SIGNUP CONTAINER -->
+    <div id="signup-container" class="auth-container">
+        <form id="signup-form" class="auth-form">
+            <div class="login-header">
+                <img src="mlogo.jpeg" alt="Maatram Foundation" class="header-logo">
+            </div>
+
+            <p id="signup-error" class="auth-error" style="display: none;"></p>
+
+            <input type="text" id="signup-name" placeholder="Full Name" required>
+            <input type="text" id="signup-regno" placeholder="Register Number (e.g., 9176...)" required>
+            <input type="email" id="signup-email" placeholder="Email Address" required>
+            <input type="password" id="signup-password" placeholder="Password (min. 6 chars)" required>
+
+            <select id="signup-role">
+                <option value="student">I am a Student</option>
+                <option value="organizer">I am an Organizer</option>
+                <option value="anchor">I am an Anchor</option>
+                <option value="superadmin">I am a Super Admin</option>
+            </select>
+
+            <button type="submit">Sign Up</button>
+
+            <p class="toggle-auth">
+                Already have an account?
+                <a href="#" id="show-login-link">Login</a>
+            </p>
+        </form>
+    </div>
+
+    <!-- LOGIN CONTAINER -->
+    <div id="login-container" class="auth-container" style="display: none;">
+        <form id="login-form" class="auth-form">
+            <div class="login-header">
+                <img src="mlogo.jpeg" alt="Maatram Foundation" class="header-logo">
+                <p>Welcome back to Maatram Foundation</p>
+            </div>
+
+            <p id="login-error" class="auth-error" style="display: none;"></p>
+
+            <select id="login-role">
+                <option value="student">I am a Student</option>
+                <option value="organizer">I am an Organizer</option>
+                <option value="anchor">I am an Anchor</option>
+                <option value="superadmin">I am a Super Admin</option>
+            </select>
+
+            <input type="email" id="login-email" placeholder="Email Address" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+
+            <button type="submit">Login</button>
+
+            <p class="toggle-auth">
+                Don't have an account?
+                <a href="#" id="show-signup-link">Sign Up</a>
+            </p>
+        </form>
+    </div>
+
+    <script type="module" src="login-script.js"></script>
+
+</body>
+</html>
