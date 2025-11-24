@@ -131,25 +131,26 @@ body{
 
 /* Generic primary button */
 .btn-primary{
-  background:#ffda6a; 
+  background:#f7ff8e; 
   color:#000000;
 }
+
 .btn-primary:hover{
   transform:translateY(-2px);
-  background:#fef08a;
+  background:#feed6a;
   box-shadow:0 10px 24px rgba(0,0,0,0.10);
 }
 /* Secondary button – softer yellow but still clearly clickable */
 .btn-secondary{
-  background:#ffda6a;
+  background:#f7ff8e;
   color:#1f2933;
-  border:1px solid #eab308;
+  /* border:1px solid #ffc821; */
   box-shadow:0 4px 14px rgba(0,0,0,0.06);
 }
 
 .btn-secondary:hover{
   transform:translateY(-2px);
-  background:#fef08a;
+  background:#feed6a;
   box-shadow:0 10px 24px rgba(0,0,0,0.10);
 }
 
