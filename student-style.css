@@ -131,13 +131,17 @@ body{
 
 /* Generic primary button */
 .btn-primary{
-  background:var(--accent);
-  color:#fff;
+  background:#ffda6a; 
+  color:#000000;
 }
-
+.btn-primary:hover{
+  transform:translateY(-2px);
+  background:#fef08a;
+  box-shadow:0 10px 24px rgba(0,0,0,0.10);
+}
 /* Secondary button – softer yellow but still clearly clickable */
 .btn-secondary{
-  background:#fff9c2;
+  background:#ffda6a;
   color:#1f2933;
   border:1px solid #eab308;
   box-shadow:0 4px 14px rgba(0,0,0,0.06);
