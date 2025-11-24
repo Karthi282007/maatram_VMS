@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MAATRAM FOUNDATION — Student Portal</title>
+  <link rel="stylesheet" href="student-style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="left">
+      <button id="hambtn" class="icon-btn" aria-label="Open profile panel">☰</button>
+    </div>
+
+    <!-- Center: logo -->
+    <div class="center">
+      <img src="mlogo.jpeg" alt="Maatram Foundation logo" class="top-logo">
+    </div>
+
+    <div class="right">
+      <button
+        id="notifBtn"
+        class="icon-btn"
+        title="Notifications"
+        aria-label="Notifications"
+      >
+        🔔<span id="notifCount" class="badge hidden">0</span>
+      </button>
+
+      <!-- Logout button now uses classes instead of huge inline style -->
+      <button
+        id="logoutBtn"
+        class="btn btn-yellow"
+        title="Logout"
+      >
+        Logout
+      </button>
+    </div>
+  </header>
+
+  <!-- Slide-out profile panel -->
+  <aside
+    id="profilePanel"
+    class="panel left-panel hidden"
+    style="max-height:85vh; overflow:auto; padding:16px; box-sizing:border-box;"
+  >
+    <div class="panel-header" style="display:flex;align-items:center;gap:12px;">
+      <div
+        id="profileCircle"
+        style="width:48px;height:48px;border-radius:999px;background:#5b4ef6;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;overflow:hidden;position:relative;"
+      >
+        <!-- will be replaced with <img> if photo exists -->
+        <span id="profileInitial">ST</span>
+        <img id="profileCircleImg" src="" alt="photo" style="width:100%;height:100%;object-fit:cover;display:none;position:absolute;top:0;left:0;">
+      </div>
+      <div style="flex:1;">
+        <div id="profileName" class="pname">Student Name</div>
+        <div id="profileRole" class="prole">Student</div>
+      </div>
+      <button
+        id="closePanelBtn"
+        class="icon-btn"
+        title="Close"
+        aria-label="Close profile panel"
+      >
+        ✕
+      </button>
+    </div>
+
+    <!-- read-only summary (visible by default) -->
+    <div id="profileSummary" style="margin-top:12px;">
+      <p style="margin:6px 0"><strong>Full name:</strong> <span id="summaryName">—</span></p>
+      <p style="margin:6px 0"><strong>Phone:</strong> <span id="summaryPhone">—</span></p>
+      <p style="margin:6px 0"><strong>College:</strong> <span id="summaryCollege">—</span></p>
+      <p style="margin:6px 0"><strong>Year:</strong> <span id="summaryYear">—</span></p>
+      <div style="margin-top:10px;">
+        <button id="editProfileBtn" class="link-btn">Edit profile</button>
+      </div>
+    </div>
+
+    <!-- edit form (hidden until Edit clicked) -->
+    <div id="profileEdit" style="margin-top:12px; display:none;">
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:8px;">
+        <img id="profilePhotoPreview" src="mlogo.jpeg" alt="photo" style="width:72px;height:72px;border-radius:8px;object-fit:cover;border:1px solid #e6eef8">
+        <div>
+          <input type="file" id="profilePhotoInput" accept="image/*">
+          <div class="muted" style="font-size:12px;margin-top:6px">Recommended: square image, &lt;2MB</div>
+        </div>
+      </div>
+
+      <label style="display:block;margin-bottom:8px">
+        Full name
+        <input id="profileNameInput" class="txt" type="text" placeholder="Your full name">
+      </label>
+
+      <label style="display:block;margin-bottom:8px">
+        Date of birth
+        <input id="profileDobInput" class="txt" type="date">
+      </label>
+
+      <label style="display:block;margin-bottom:8px">
+        Phone number
+        <input id="profilePhoneInput" class="txt" type="tel" placeholder="+91...">
+      </label>
+
+      <label style="display:block;margin-bottom:8px">
+        College name
+        <input id="profileCollegeInput" class="txt" type="text" placeholder="College name">
+      </label>
+
+      <label style="display:block;margin-bottom:8px">
+        Year
+        <select id="profileYearInput" class="txt">
+          <option value="">Select year</option>
+          <option value="1">1st</option>
+          <option value="2">2nd</option>
+          <option value="3">3rd</option>
+          <option value="4">4th</option>
+          <option value="Other">Other</option>
+        </select>
+      </label>
+
+      <div style="display:flex;gap:8px;margin-top:10px;">
+        <button id="saveProfileBtn" class="btn btn-primary">Save Profile</button>
+        <button id="cancelProfileBtn" class="btn btn-secondary">Cancel</button>
+      </div>
+      <div id="profileMsg" class="muted" style="margin-top:8px"></div>
+    </div>
+
+    <hr style="margin-top:16px" />
+    <div class="panel-links" style="margin-top:12px;">
+      <button class="link-btn" id="panelContribBtn">My contributions</button><br>
+      <button class="link-btn" id="panelAchBtn">My achievements</button><br>
+      <button class="link-btn" id="panelReportBtn">My report</button>
+    </div>
+  </aside>
+
+
+  <!-- Main content -->
+  <main class="container">
+    <section class="welcome-card">
+      <h2 id="welcomeTitle">Welcome, Student</h2>
+
+      <!-- Turned into a tablist for accessibility; IDs unchanged -->
+      <div class="button-row" role="tablist" aria-label="Student sections" style="margin-top:12px; display:flex; gap:10px;">
+
+        <button
+          id="btnRecent"
+          data-tab="recent"
+          class="btn btn-yellow tab-btn"
+          role="tab"
+          aria-selected="true"
+          aria-controls="frame"
+        >
+          Recent Events
+        </button>
+
+        <button
+          id="btnMyEvents"
+          data-tab="myevents"
+          class="btn btn-yellow tab-btn"
+          role="tab"
+          aria-selected="false"
+          aria-controls="frame"
+        >
+          My Events
+        </button>
+
+        <button
+          id="btnTasks"
+          data-tab="tasks"
+          class="btn btn-yellow tab-btn"
+          role="tab"
+          aria-selected="false"
+          aria-controls="frame"
+        >
+          My Tasks
+        </button>
+
+      </div>
+    </section>
+
+
+    <section id="frame" class="frame">
+      <div class="placeholder">Loading...</div>
+    </section>
+
+    <section class="summary-row">
+      <div class="card" id="reportCard">
+        <h3>My Report</h3>
+        <div id="reportContrib" class="big">0</div>
+        <p class="muted">Total contributions</p>
+      </div>
+
+      <div class="card" id="achievementsCard">
+        <h3>Achievements</h3>
+        <ul id="achCard" class="small-list">
+          <li>No achievements yet</li>
+        </ul>
+      </div>
+
+      <div class="card" id="contribCard">
+        <h3>My contributions</h3>
+        <div id="contribList" class="muted">No contributions yet</div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script type="module" src="student-script.js"></script>
+</body>
+</html>

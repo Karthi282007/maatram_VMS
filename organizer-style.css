@@ -1,0 +1,497 @@
+/* organizer-style.css
+   Palette: Yellow (accent), Black, White
+*/
+
+/* ---- Tokens ---- */
+:root{
+  --yellow: #ffd84a;
+  --yellow-2: #ffd000;
+  --yellow-3: #f7c600;
+  --black: #000000;
+  --white: #ffffff;
+  --muted: rgba(0,0,0,0.56);
+  --card-shadow: 0 12px 36px rgba(0,0,0,0.08);
+  --glass: rgba(255,255,255,0.9);
+  --radius: 12px;
+  --ease: cubic-bezier(.2,.9,.2,1);
+}
+
+/* ---- Base / Reset ---- */
+.organizer-page *,
+.organizer-page *::before,
+.organizer-page *::after,
+* {
+  box-sizing: border-box;
+}
+
+.organizer-page,
+.organizer-page body,
+body.organizer-page {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin:0;
+  background:#f3f4f6;               /* slightly darker so cards pop */
+  color:#0f172a;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* ---- Topbar ---- */
+.organizer-page .topbar,
+.topbar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 18px;
+  background: linear-gradient(180deg,var(--white), #fffaf0);
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  position: sticky;
+  top:0;
+  z-index:60;
+  gap:12px;
+}
+
+.organizer-page .left,
+.left {
+  flex:0 0 48px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.organizer-page .center,
+.center {
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.organizer-page .right,
+.right {
+  flex:0 0 auto;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.organizer-page .top-logo,
+.top-logo {
+  height:44px;
+  object-fit:contain;
+  display:block;
+  transition: transform 260ms var(--ease);
+}
+.organizer-page .top-logo:hover,
+.top-logo:hover {
+  transform: scale(1.03);
+}
+
+/* ---- Icon / small buttons (hamburger, bell, logout) ---- */
+.organizer-page .icon-btn,
+.icon-btn {
+  background: transparent;
+  border: 0;
+  padding:8px;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:18px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  transition: transform 180ms, background 120ms;
+}
+.organizer-page .icon-btn:hover,
+.icon-btn:hover {
+  background: rgba(0,0,0,0.04);
+  transform: translateY(-3px);
+}
+
+/* badge (notifications) */
+.organizer-page .badge,
+.badge {
+  background: var(--black);
+  color: var(--yellow);
+  padding:4px 8px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+  display:inline-block;
+  margin-left:6px;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.06);
+  animation: badgePulse 2200ms infinite;
+}
+@keyframes badgePulse {
+  0% { transform: scale(1); opacity:1 }
+  50% { transform: scale(1.05); opacity:.94 }
+  100% { transform: scale(1); opacity:1 }
+}
+
+/* ---- Main container & welcome card ---- */
+.organizer-page .container,
+.container {
+  max-width:1100px;
+  margin:20px auto;
+  padding:0 16px;
+}
+
+.organizer-page .welcome-card,
+.welcome-card {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background: var(--white);
+  padding:16px;
+  border-radius:var(--radius);
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 220ms var(--ease);
+}
+.organizer-page .welcome-card:hover,
+.welcome-card:hover {
+  box-shadow: 0 22px 60px rgba(0,0,0,0.09);
+}
+
+/* Actions row under title */
+.organizer-page .organizer-actions,
+.organizer-actions {
+  margin-top:12px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+/* ---- Organizer action buttons (big yellow) ---- */
+.organizer-page .organizer-actions .action-btn,
+.organizer-actions .action-btn {
+  background: var(--yellow);
+  color: var(--black);
+  border: 0;
+  padding:10px 14px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:700;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+  transition: transform 220ms var(--ease), box-shadow 220ms var(--ease), background 120ms;
+  position: relative;
+  overflow:hidden;
+}
+.organizer-page .organizer-actions .action-btn:hover,
+.organizer-actions .action-btn:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 28px 60px rgba(0,0,0,0.12);
+  background: var(--yellow-2);
+}
+.organizer-page .organizer-actions .action-btn:active,
+.organizer-actions .action-btn:active {
+  transform: scale(0.98);
+  background: var(--yellow-3);
+}
+
+/* small responsive for the button group */
+@media (max-width:720px) {
+  .organizer-page .welcome-card,
+  .welcome-card {
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+  }
+}
+
+/* ---- Frame / Content area ---- */
+.organizer-page .frame,
+.frame {
+  margin-top:18px;
+  background:#ffffff;
+  min-height:320px;
+  padding:18px;
+  border-radius:12px;
+  box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+  border:1px solid #e5e7eb;         /* clear border so it stands out */
+  transition: transform 260ms var(--ease), opacity 220ms;
+}
+
+/* ---- Event row card ---- */
+.organizer-page .event,
+.event {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:14px;
+  border-radius:10px;
+  background:#fdfdfd;
+  border:1px solid #d4d4d8;         /* stronger border for clarity */
+  transition: transform 180ms var(--ease), box-shadow 180ms var(--ease);
+}
+.organizer-page .event:hover,
+.event:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 28px 60px rgba(0,0,0,0.06);
+}
+.organizer-page .event .meta,
+.event .meta {
+  color: var(--muted);
+  font-size:13px;
+}
+.organizer-page .event .desc,
+.event .desc {
+  margin-top:8px;
+  color:#0f172a;
+}
+
+/* small circular avatar in event */
+.organizer-page .event .avatar,
+.event .avatar {
+  background: var(--black);
+  color: var(--yellow);
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+}
+
+/* ---- Panel (slide-out) ---- */
+.organizer-page .panel,
+.panel {
+  position: fixed;
+  top:84px;
+  left:16px;
+  width:340px;
+  max-height:86vh;
+  background: linear-gradient(180deg,var(--white), #fffaf0);
+  border-radius:14px;
+  padding:16px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.08);
+  z-index:80;
+  overflow:auto;
+}
+
+.organizer-page .panel-header,
+.panel-header {
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.organizer-page .panel-links,
+.panel-links {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:14px;
+}
+
+/* avatar in panel */
+.organizer-page .avatar,
+.avatar {
+  width:56px;
+  height:56px;
+  border-radius:999px;
+  background:var(--black);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-weight:700;
+  overflow:hidden;
+}
+
+/* ---- Buttons: global yellow theme (excluding .icon-btn) ---- */
+.organizer-page .btn,
+.organizer-page .action-btn,
+.organizer-page .link-btn,
+.organizer-page .tab-btn,
+.btn,
+.action-btn,
+.link-btn,
+.tab-btn {
+  --bg-yellow: var(--yellow);
+  --bg-yellow-2: var(--yellow-2);
+  --bg-yellow-3: var(--yellow-3);
+  border: 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight:700;
+  cursor:pointer;
+  transition: transform 220ms var(--ease), box-shadow 220ms var(--ease), background 120ms;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-yellow);
+  color: var(--black);
+}
+
+/* link-btn inside panel: make it look like a subtle text button */
+.organizer-page .panel .link-btn,
+.panel .link-btn {
+  background: transparent;
+  box-shadow: none;
+  border-radius:10px;
+  padding:10px;
+  border:0;
+  text-align:left;
+}
+
+/* hover / active for main yellow buttons */
+.organizer-page .btn:hover,
+.btn:hover,
+.organizer-page .action-btn:hover,
+.action-btn:hover,
+.organizer-page .tab-btn:hover,
+.tab-btn:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 28px 60px rgba(0,0,0,0.12);
+  background: var(--bg-yellow-2);
+}
+.organizer-page .btn:active,
+.btn:active,
+.organizer-page .action-btn:active,
+.action-btn:active {
+  transform: scale(0.98);
+  background: var(--bg-yellow-3);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+}
+
+/* Secondary button: softer yellow but still clearly clickable */
+.organizer-page .btn.secondary,
+.btn.secondary {
+  background:#fff9c2;
+  color:#1f2933;
+  border:1px solid #eab308;
+  box-shadow:0 4px 14px rgba(0,0,0,0.06);
+}
+.organizer-page .btn.secondary:hover,
+.btn.secondary:hover {
+  transform:translateY(-3px);
+  background:#eab308;
+  box-shadow:0 10px 24px rgba(0,0,0,0.10);
+}
+
+/* ---- Text inputs / textarea ---- */
+.txt {
+  width:100%;
+  padding:8px 10px;
+  border-radius:10px;
+  border:1px solid #cbd5e1;       /* visible border */
+  background:#ffffff;
+  font:inherit;
+  box-sizing:border-box;
+}
+
+.txt::placeholder {
+  color:#9ca3af;
+  opacity:0.9;
+}
+
+.organizer-page input:focus,
+.organizer-page textarea:focus,
+.organizer-page select:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06),
+              inset 0 0 0 3px rgba(255,216,77,0.12);
+  border-radius: 10px;
+  outline: none;
+}
+
+/* ---- Ripple helper style ---- */
+.organizer-page .ripple,
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 700ms ease-out;
+  background: rgba(0,0,0,0.12);
+  pointer-events: none;
+}
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ---- Pop-in animation for new dynamic components inside frame ---- */
+@keyframes popIn {
+  from {
+    opacity:0;
+    transform: translateY(8px) scale(.995);
+  }
+  to {
+    opacity:1;
+    transform: translateY(0) scale(1);
+  }
+}
+.organizer-page .frame > *,
+.frame > * {
+  animation: popIn 260ms var(--ease);
+}
+
+/* ---- Utility / layout ---- */
+.placeholder {
+  text-align:center;
+  color:var(--muted);
+  padding:60px 0;
+  font-size:15px;
+}
+
+.card {
+  background:#ffffff;
+  padding:14px;
+  border-radius:12px;
+  box-shadow: var(--card-shadow);
+  margin-bottom:14px;
+  border:1px solid #e5e7eb;      /* visible card border */
+}
+
+.summary-row {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:18px;
+}
+
+@media (max-width:720px) {
+  .summary-row {
+    grid-template-columns:1fr;
+  }
+}
+
+/* ---- Responsive tweaks ---- */
+@media (max-width:820px) {
+  .organizer-page .panel,
+  .panel {
+    left:8px;
+    width:88vw;
+    top:80px;
+    max-height:68vh;
+  }
+}
+@media (max-width:520px) {
+  .organizer-page .top-logo,
+  .top-logo {
+    height:36px;
+  }
+  .organizer-page .panel,
+  .panel {
+    left:5px;
+    width:92vw;
+  }
+}
+
+/* ---- Accessibility focus outlines ---- */
+.organizer-page button:focus,
+button:focus,
+.organizer-page a:focus,
+a:focus {
+  outline: 3px solid rgba(255,216,77,0.14);
+  outline-offset:3px;
+}
+
+/* ---- Keep .hidden behavior (JS depends on it) ---- */
+.hidden {
+  display: none !important;
+}

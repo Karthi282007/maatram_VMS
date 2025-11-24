@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>MAATRAM FOUNDATION — Organizer Portal</title>
+  <link rel="stylesheet" href="organizer-style.css">
+</head>
+<body class="organizer-page">
+  <header class="topbar">
+    <div class="left">
+      <button id="hambtn" class="icon-btn" aria-label="Open menu">☰</button>
+    </div>
+
+    <div class="center">
+      <img src="mlogo.jpeg" alt="Maatram Logo" class="top-logo">
+    </div>
+
+    <div class="right">
+      <button
+        id="notifBtn"
+        class="icon-btn"
+        title="Notifications"
+        aria-label="Notifications"
+      >
+        🔔<span id="notifCount" class="badge hidden">0</span>
+      </button>
+      <button
+        id="logoutBtn"
+        class="icon-btn"
+        title="Logout"
+        aria-label="Logout"
+      >
+        Logout
+      </button>
+    </div>
+  </header>
+
+  <!-- Slide-out panel -->
+  <aside id="profilePanel" class="panel left-panel hidden">
+    <div class="panel-header">
+      <div id="profileInitial" class="avatar">OR</div>
+      <div>
+        <div id="profileName" class="pname">Organizer</div>
+        <div id="profileRole" class="prole">Organizer</div>
+      </div>
+    </div>
+
+    <div class="panel-links">
+      <button class="link-btn" id="panelRecentBtn">Recent Events</button>
+      <button class="link-btn" id="panelAddBtn">Add Event</button>
+      <button class="link-btn" id="panelManageBtn">Manage Events</button>
+    </div>
+
+    <hr>
+
+    <div class="profile-details">
+      <h4>Your info</h4>
+      <div id="profileQuick">Loading...</div>
+    </div>
+  </aside>
+
+  <main class="container">
+    <section class="welcome-card">
+      <h2 id="welcomeTitle">Organizer Dashboard</h2>
+
+      <!-- Buttons shown under the title -->
+      <div class="organizer-actions">
+        <button id="mainRecentBtn" class="action-btn">Recent Events</button>
+        <button id="mainAddBtn" class="action-btn">Add Event</button>
+        <button id="mainManageBtn" class="action-btn">Manage Events</button>
+      </div>
+    </section>
+
+    <!-- frame container (script requires this) -->
+    <section id="frame" class="frame">
+      <div class="placeholder">Loading...</div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script type="module" src="organizer-script.js"></script>
+</body>
+</html>

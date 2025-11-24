@@ -1,0 +1,442 @@
+:root{
+  --bg:#f3f4f6;          /* slightly darker so cards stand out */
+  --card:#fff;
+  --muted:#6b7280;
+  --accent:#4f46e5;
+  --shadow: 0 6px 18px rgba(15,23,42,0.06);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  margin:0;
+  background:var(--bg);
+  color:#0f172a;
+}
+
+/* Topbar */
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 18px;
+  background:linear-gradient(90deg,#fff, #fbfdff);
+  border-bottom:1px solid #e6eef8;
+  position:sticky;
+  top:0;
+  z-index:30;
+}
+
+.left{
+  flex:0 0 60px;
+  display:flex;
+  align-items:center;
+}
+
+.center{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.right{
+  flex:0 0 auto;
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+
+.top-logo{
+  height:44px;
+  object-fit:contain;
+}
+
+/* icon buttons in topbar */
+.icon-btn{
+  background:transparent;
+  border:0;
+  padding:6px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:18px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  transition:background 0.15s ease, transform 0.15s ease;
+}
+
+.icon-btn:hover{
+  background:rgba(0,0,0,0.04);
+  transform:translateY(-2px);
+}
+
+/* Container */
+.container{
+  max-width:1100px;
+  margin:20px auto;
+  padding:0 16px;
+}
+
+/* Welcome card */
+.welcome-card{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:var(--card);
+  padding:18px;
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  border:1px solid #e5e7eb;   /* clearer boundary */
+}
+
+.button-row{
+  display:flex;
+  gap:8px;
+}
+
+/* Base button styles */
+.btn{
+  padding:8px 12px;
+  border-radius:8px;
+  border:0;
+  cursor:pointer;
+  font-weight:500;
+}
+
+/* Yellow primary button (used for tabs + logout) */
+.btn-yellow{
+  background:#fde047;
+  color:#000;
+  border-radius:10px;
+  padding:10px 16px;
+  font-weight:600;
+  box-shadow:0 3px 8px rgba(0,0,0,0.08);
+  transition:all .25s ease;
+}
+
+.btn-yellow:hover{
+  transform:translateY(-3px) scale(1.04);
+  background:#facc15;
+  box-shadow:0 8px 18px rgba(0,0,0,0.15);
+}
+
+.btn-yellow:active{
+  transform:scale(0.96);
+  background:#fbbf24;
+}
+
+/* Generic primary button */
+.btn-primary{
+  background:var(--accent);
+  color:#fff;
+}
+
+/* Secondary button – softer yellow but still clearly clickable */
+.btn-secondary{
+  background:#fff9c2;
+  color:#1f2933;
+  border:1px solid #eab308;
+  box-shadow:0 4px 14px rgba(0,0,0,0.06);
+}
+
+.btn-secondary:hover{
+  transform:translateY(-2px);
+  background:#fef08a;
+  box-shadow:0 10px 24px rgba(0,0,0,0.10);
+}
+
+/* Tab button (small extra tweaks if needed) */
+.tab-btn{
+  white-space:nowrap;
+  border:0;
+  border-radius:8px;
+}
+
+/* Frame / main card area */
+.frame{
+  margin-top:18px;
+  background:var(--card);
+  min-height:300px;
+  padding:16px;
+  border-radius:12px;
+  box-shadow:var(--shadow);
+  border:1px solid #e5e7eb;   /* main frame clearly outlined */
+}
+
+/* Panel improvements: taller, scrollable, responsive */
+.panel{
+  position:fixed;
+  top:76px;
+  left:12px;
+  width:320px;
+  background:var(--card);
+  max-height:85vh;
+  border-radius:14px;
+  padding:16px;
+  box-shadow:var(--shadow);
+  z-index:40;
+  overflow:auto;
+}
+
+.hidden{
+  display:none;
+}
+
+.panel-header{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+/* avatar circle */
+.avatar{
+  width:56px;
+  height:56px;
+  border-radius:999px;
+  background:var(--accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-weight:700;
+  overflow:hidden;
+  position:relative;
+}
+
+/* panel links */
+.panel-links{
+  margin-top:18px;
+}
+
+/* Summary row cards */
+.summary-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:18px;
+}
+
+/* Card */
+.card{
+  background:var(--card);
+  padding:18px;
+  border-radius:12px;
+  box-shadow:var(--shadow);
+  margin-bottom:16px;
+  border:1px solid #e5e7eb;    /* clearer card border */
+}
+
+.big{
+  font-size:22px;
+  font-weight:700;
+  margin-top:6px;
+}
+
+.small-list{
+  margin:8px 0;
+  padding-left:16px;
+  color:var(--muted);
+}
+
+/* Event item */
+.event{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:14px;
+  border-radius:10px;
+  background:#fdfdfd;
+  margin-bottom:12px;
+  border:1px solid #d4d4d8;     /* stronger border for clarity */
+  transition:transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.event:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 24px rgba(15,23,42,0.10);
+}
+
+.event .meta{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.event .desc{
+  margin-top:8px;
+  color:#0f172a;
+}
+
+/* avatar small circle on right inside event */
+.event .avatar{
+  background:#5b4ef6;
+  color:#fff;
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+}
+
+/* Toast */
+.toast{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  background:#111;
+  color:#fff;
+  padding:10px 14px;
+  border-radius:10px;
+  box-shadow:0 6px 18px rgba(2,6,23,0.4);
+}
+
+/* Badge (notifications) */
+.badge{
+  background:#ef4444;
+  color:white;
+  padding:2px 6px;
+  border-radius:999px;
+  font-size:11px;
+  margin-left:6px;
+}
+
+.muted{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.placeholder{
+  text-align:center;
+  color:var(--muted);
+  padding:60px 0;
+}
+
+/* organizer actions (if reused) */
+.organizer-actions .action-btn{
+  padding:10px 14px;
+  border-radius:10px;
+  border:0;
+  background:#f7ff8e;
+  color:#000;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(15,23,42,0.06);
+}
+
+.organizer-actions .action-btn:hover{
+  opacity:0.95;
+  transform:translateY(-1px);
+  transition: all .12s ease;
+}
+
+/* message box area */
+.card textarea.txt{
+  width:100%;
+  min-height:90px;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #e6eef8;
+}
+
+/* profile form styles (for future use) */
+.profile-form label{
+  display:block;
+  margin-bottom:10px;
+  font-size:14px;
+}
+
+.profile-form input[type="text"],
+.profile-form input[type="tel"],
+.profile-form input[type="date"],
+.profile-form select,
+.profile-form textarea{
+  width:100%;
+  padding:8px;
+  border-radius:8px;
+  border:1px solid #e6eef8;
+  margin-top:6px;
+  box-sizing:border-box;
+}
+
+.profile-form .btn{
+  padding:8px 12px;
+  border-radius:8px;
+  border:0;
+  cursor:pointer;
+}
+
+#profileReadout div{
+  margin-bottom:8px;
+  color:#0f172a;
+}
+
+/* Generic text input style for .txt (used in profile form, etc.) */
+.txt{
+  width:100%;
+  padding:8px 10px;
+  border-radius:10px;
+  border:1px solid #cbd5e1;   /* visible border */
+  background:#ffffff;
+  font:inherit;
+  box-sizing:border-box;
+}
+
+.txt::placeholder{
+  color:#9ca3af;
+  opacity:0.9;
+}
+
+/* left panel width */
+.left-panel{
+  width:320px;
+  max-width:92%;
+  box-shadow:0 8px 30px rgba(15,23,42,0.06);
+  border-radius:10px;
+  background:#ffffff;
+}
+
+/* link buttons inside panel */
+.link-btn{
+  display:block;
+  width:100%;
+  max-width:280px;
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid #e5e7eb;
+  background:#f6ffa6;
+  color:#000;
+  font-weight:500;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(15,23,42,0.06);
+  text-align:left;
+}
+
+.link-btn:hover{
+  opacity:0.95;
+  transform:translateY(-1px);
+  transition: all .12s ease;
+}
+
+/* small screen adjustments */
+@media (max-width:720px){
+  .summary-row{
+    grid-template-columns:1fr;
+  }
+
+  .panel{
+    width:90%;
+    left:5%;
+    top:80px;
+    max-height:70vh;
+  }
+
+  .top-logo{
+    height:36px;
+  }
+}

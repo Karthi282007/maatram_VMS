@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Complete Your Profile — MAATRAM</title>
+  <link rel="stylesheet" href="student-style.css">
+  <style>
+    /* small overrides for the profile form */
+    .pc-card{max-width:720px;margin:36px auto;padding:20px;border-radius:12px;background:#fff;box-shadow:0 10px 30px rgba(2,6,23,0.06)}
+    .pc-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .pc-field{display:block;margin-bottom:12px}
+    .pc-field input, .pc-field select, .pc-field textarea{width:100%;padding:8px;border-radius:8px;border:1px solid #e6eef8}
+    .pc-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+    @media(max-width:720px){.pc-row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="left"><button id="hambtn" class="icon-btn">☰</button></div>
+    <div class="center"><img src="mlogo.jpeg" alt="Maatram Logo" class="top-logo"></div>
+    <div class="right"></div>
+  </header>
+
+  <main>
+    <div class="pc-card">
+      <h2>Complete your profile</h2>
+      <p class="muted">Fill in a few details so we can personalize your dashboard.</p>
+
+      <div id="pc-form">
+        <div class="pc-row">
+          <div>
+            <label class="pc-field">Full name
+              <input id="pc-name" type="text" placeholder="Your full name">
+            </label>
+          </div>
+          <div>
+            <label class="pc-field">Role
+              <select id="pc-role">
+                <option value="student">Student</option>
+                <option value="organizer">Organizer</option>
+                <option value="anchor">Anchor</option>
+                <option value="superadmin">Super Admin</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="pc-row">
+          <div>
+            <label class="pc-field">Phone number
+              <input id="pc-phone" type="text" placeholder="+91 98765 43210">
+            </label>
+          </div>
+          <div>
+            <label class="pc-field">Register Number
+              <input id="pc-regno" type="text" placeholder="e.g., 9176...">
+            </label>
+          </div>
+        </div>
+
+        <label class="pc-field">Short bio / achievements (comma separated)
+          <input id="pc-ach" type="text" placeholder="First Aid trained, 100+ hours">
+        </label>
+
+        <label class="pc-field">Contribution details (optional)
+          <textarea id="pc-contrib" rows="3" placeholder="Optional: recent contributions or notes"></textarea>
+        </label>
+
+        <div class="pc-actions">
+          <button id="pc-skip" class="btn" style="background:#ccc;color:#000">Skip</button>
+          <button id="pc-save" class="btn">Save & Continue</button>
+        </div>
+
+        <div id="pc-msg" class="muted" style="margin-top:10px"></div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="profile-complete-script.js"></script>
+</body>
+</html>
